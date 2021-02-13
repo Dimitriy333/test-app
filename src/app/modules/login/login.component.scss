@@ -1,0 +1,45 @@
+.login {
+  height: 100%;
+
+  &__form {
+    background: #FFFFFF;
+    box-shadow: 0 0.2vh 4.1vh rgba(0, 0, 0, 0.16);
+    border-radius: 0.6vh;
+    width: 47vh;
+    padding: 4.3vh;
+
+    &__logo {
+      $radius: 3.7vh;
+      background: #E6EDF8;
+      width: $radius;
+      height: $radius;
+      border-radius: $radius;
+      color: #A4ACB1;
+    }
+
+    &__label {
+      font-weight: bold;
+      font-size: 1.8vh;
+      line-height: 120%;
+      color: #333333;
+    }
+
+    &__forgot_password {
+      font-weight: normal;
+      font-size: 1.1vh;
+      color: #5B606C;
+    }
+
+    &__button {
+      background: #FAFAFA;
+      border-radius: 0.5vh;
+      width: 7.6vh;
+      font-size: 1.4vh;
+      line-height: 120%;
+
+      &:disabled {
+        color: #BDC9DB;
+      }
+    }
+  }
+}

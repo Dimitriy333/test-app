@@ -1,0 +1,47 @@
+<div class="login"
+     fxLayout="row"
+     fxLayoutAlign="center center">
+  <form [formGroup]="loginForm"
+        (ngSubmit)="login()"
+        class="login__form"
+        fxLayout="column"
+        fxLayoutGap="1.5vh"
+        fxLayoutAlign="center">
+    <div class="login__form__logo" fxLayoutAlign="center center">Logo</div>
+    <div class="login__form__label">Log In</div>
+    {{isLoading$ | async | json}}
+
+    <mat-form-field hideRequiredMarker appearance="outline">
+      <mat-label>E-mail</mat-label>
+      <input matInput
+             type="email"
+             formControlName="email"
+             required>
+    </mat-form-field>
+
+    <mat-form-field hideRequiredMarker appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput
+             [type]="passwordHintRef.state === 'checked' ? 'text' : 'password'"
+             formControlName="password"
+             required>
+      <mat-pseudo-checkbox [style.display]="'none'" #passwordHintRef></mat-pseudo-checkbox>
+      <mat-icon matSuffix (click)="passwordHintRef.state = passwordHintRef.state === 'checked' ? 'unchecked' : 'checked'">
+        {{passwordHintRef.state === 'checked' ? 'visibility' : 'visibility_off'}}
+      </mat-icon>
+    </mat-form-field>
+
+    <mat-error class="login__form__error_message" *ngIf="(errorMessage$ | async) as errorMessage">
+      {{errorMessage}}
+    </mat-error>
+
+    <a class="login__form__forgot_password">Forgot the password</a>
+
+    <button mat-button
+            fxFlexAlign="end"
+            fxFlex="4.1vh"
+            class="login__form__button"
+            type="submit"
+            [disabled]="loginForm.invalid || !!(isLoading$ | async)">Log In</button>
+  </form>
+</div>
